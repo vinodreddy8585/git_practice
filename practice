@@ -1,0 +1,22 @@
+(entity USERS
+  (api-docs-url "https://developers.coassemble.com/api/users#get-users")
+  (source (http/get :url "/api/v1/members")
+    (paging/page-number
+      :page-number-query-param-initial-value  0
+      :page-number-query-param-name          "page"
+      :limit                                 100
+      :limit-query-param-name                "limit")
+    (extract-path ""))
+  (fields
+    id 		:id
+    user_name                 :<= "username"
+    first_name                 :<= "firstname"
+    last_name                  :<= "lastname"
+    avatar
+    email
+    email_verified 		        :<= "emailVerified"
+    active
+    last_login 			          :<= "lastLogin"
+    last_sent 			          :<= "lastSent"
+    accreditable_id 		      :<= "accreditableId"
+    custom_value 			        :<= "customValue"))
